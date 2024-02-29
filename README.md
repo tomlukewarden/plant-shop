@@ -1,2 +1,1 @@
-# plant-shop
-Final portfolio piece for Boolean UK
+# Final Portfolio Project
