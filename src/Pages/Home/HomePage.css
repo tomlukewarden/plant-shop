@@ -1,0 +1,22 @@
+
+header{
+  text-align: center;
+  border: 2px dotted black;
+}
+
+.logo{
+  border: 2px dotted blue;
+}
+
+.logo-img{
+  border: 2px dotted green;
+  padding: 50px;
+}
+h1{
+  border: 2px dotted red;
+}
+
+.nav-bar{
+  border: 2px dotted orangered;
+  padding: 30px;
+}
