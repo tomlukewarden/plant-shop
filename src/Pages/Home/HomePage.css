@@ -1,22 +1,52 @@
 
 header{
   text-align: center;
-  border: 2px dotted black;
 }
 
-.logo{
-  border: 2px dotted blue;
-}
-
-.logo-img{
-  border: 2px dotted green;
-  padding: 50px;
-}
+header,
+.login,
+.logo,
 h1{
-  border: 2px dotted red;
+  background-color: #606C38;
+}
+
+.login {
+  display: flex;
+  justify-content: end;
+  padding: 30px;
+  padding-bottom: 0;
+}
+
+.login button{
+  padding: 15px;
+}
+
+.login-bttn{
+  margin-right: 20px;
 }
 
 .nav-bar{
-  border: 2px dotted orangered;
   padding: 30px;
+  margin-top: 40px;
+}
+
+.nav-bar span{
+  padding: 20px;
+}
+
+.nav-bar,
+.nav-bar span{
+  background-color: #DDA15E;
+}
+.home-shop{
+  display: flex;
+  justify-content: center;
+}
+
+
+.featured,
+.category{
+  padding: 300px;
+  margin: 40px;
+  border: 2px dotted purple;
 }
