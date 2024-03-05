@@ -1,34 +1,38 @@
-import './HomePage.css'
+import './HomePage.css';
 
 function HomePage() {
   return (
-<>
-<header>
-<div className="login">
-  <button className="login-bttn">login</button>
-  <button className='sign-up-bttn'>sign up</button>
-</div>
+    <>
+      <header className="header">
+        <div className="login">
+          <button className="login-btn">Login</button>
+          <button className="sign-up-btn">Sign up</button>
+        </div>
 
-<div className='logo'> 
-<img src='src/assets/monstera-plant.jpg' alt='' className='logo-img' width='200px' />
-<h1>plant shop</h1>
-</div>
+        <div className="logo">
+          <img src="src/assets/monstera-plant.jpg" alt="Logo" className="logo-img" width="200px" />
+          <h1>Plant Shop</h1>
+        </div>
 
-<nav className='nav-bar'>
-  <span>home</span>
-  <span>shop</span>
-  <span>about us</span>
-  <span>account</span>
-  <span>contact us</span>
-</nav>
+        <nav className="nav-bar">
+          <span>Home</span>
+          <span>Shop</span>
+          <span>About Us</span>
+          <span>Account</span>
+          <span>Contact Us</span>
+        </nav>
+      </header>
 
-</header>
-
-
-<main className='home-shop'>
-<section className='featured'>featured</section>
-<section className='category'>category</section>
-</main>
+      <main className="home-shop">
+        <section className="featured">
+          <h2>Featured Products</h2>
+          {/* add featured product items here later pls */}
+        </section>
+        <section className="category">
+          <h2>Shop by Category</h2>
+          {/* add category sections later pls */}
+        </section>
+      </main>
     </>
   );
 }
