@@ -13,7 +13,7 @@ User can search for plants []
 
 - MONDAY - work on styles of each page within project
 
-- TUESDAY - finish styles
+- TUESDAY - finish styles (need to extend this)
 
 - WEDNESDAY - work on basket functionality along with rendering images/pages for the plants
 
