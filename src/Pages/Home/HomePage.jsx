@@ -11,6 +11,7 @@ function HomePage() {
     <>
       <header className="header">
         <div className="login">
+          <img className='basket' src="src/assets/cart.png" alt="shopping cart" width='50px'  />
           <button className="login-btn">Login</button>
           <button className="sign-up-btn">Sign up</button>
         </div>
