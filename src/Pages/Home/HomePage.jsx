@@ -1,15 +1,16 @@
- // import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Shop from '../Shop/Shop'
+import Profile from '../Profile/Profile'
+import AboutUs from '../AboutUs/AboutUs'
+import ContactUs from '../ContactUs/ContactUs'
+import FeaturedProducts from './Components/FeaturedProducts';
+import ShopByCategory from './Components/ShopByCategory';
 import './HomePage.css';
 
 function HomePage() {
-  const featuredProducts = [
-    { id: 1, name: 'Monstera Deliciosa', image: 'src/assets/monstera.webp' },
-    { id: 2, name: 'Snake Plant', image: 'src/assets/snake-plant.avif' },
-    { id: 3, name: 'Aloe Vera', image: 'src/assets/aloe-plant.jpg' },
-    { id: 3, name: 'Spider Plant', image: 'src/assets/spider-plant.webp' }
-  ];
+
   return (
+    <Router>
     <>
       <header className="header">
         <div className="login">
@@ -24,53 +25,30 @@ function HomePage() {
         </div>
 
         <nav className="nav-bar">
-          <span>Home</span>
-          <span>Shop</span>
-          <span>About Us</span>
-          <span>Account</span>
-          <span>Contact Us</span>
+          <Link to='/'>Home</Link>
+          <Link to='/shop'>Shop</Link>
+          <Link to='/about'>About Us</Link>
+          <Link to='/profile'>Profile</Link>
+          <Link to='/contact'>Contact Us</Link>
         </nav>
       </header>
 
-      <main className="home-shop">
-        <section className="featured">
-          <h2>Featured Products</h2>
-          <div className="featured-products">
-            {featuredProducts.map(product => (
-              <div key={product.id} className="featured-product">
-                <img src={product.image} alt={product.name} />
-                <h3>{product.name}</h3>
-              </div>
-            ))}
-          </div>
+      <section className="home-shop">
+        <FeaturedProducts/>
+        <ShopByCategory/>
         </section>
-        <section className="category">
-          <h2>Shop by Category</h2>
-
-          <div className="categories">
-            <div className="indoor">
-          <span>indoor plants</span>
-          <img src="src/assets/indoor.avif" alt="" />
-          </div>
-
-          <div className="outdoor">
-          <span>outdoor plants</span>
-          <img src="src/assets/outdoor.png" alt="" />
-          </div>
-
-          <div className="water">
-          <span>water plants</span>
-          <img src="src/assets/water.png" alt="" />
-          </div>
-
-          <div className="pet">
-          <span>pet safe plants</span>
-          <img src="src/assets/pet.webp" alt="" />
-          </div>
-          </div>
-        </section>
+        
+      <main>
+        <Routes>
+          <Route path='/' element={<></>}/>
+          <Route path='/shop' element={<Shop/>}/>
+          <Route path='/about' element={<AboutUs/>}></Route>
+          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/contact' element={<ContactUs/>}></Route>
+        </Routes>
       </main>
     </>
+    </Router>
   );
 }
 
