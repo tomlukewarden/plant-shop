@@ -1,0 +1,19 @@
+.about-us {
+  padding: 20px;
+  margin: 20px;
+  border: 2px solid #FEFAE0;
+  border-radius: 5px;
+  background-color: #FEFAE0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-us h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-us p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}

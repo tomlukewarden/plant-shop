@@ -1,8 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Profile from '../Profile/Profile';
-import Shop from '../Shop/Shop';
-import ContactUs from '../ContactUs/ContactUs';
-import AboutUs from '../AboutUs/AboutUs';
+ // import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 import './HomePage.css';
 
