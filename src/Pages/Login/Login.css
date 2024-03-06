@@ -48,7 +48,7 @@
   border-radius: 5px;
 }
 
-.login-btn {
+.login-page-btn {
   width: 100%;
   padding: 10px;
   background-color: #606C38;
@@ -60,6 +60,6 @@
   transition: background-color 0.3s ease;
 }
 
-.login-btn:hover {
+.login-page-btn:hover {
   background-color: #283618;
 }

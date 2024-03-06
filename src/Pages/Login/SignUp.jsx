@@ -1,13 +1,13 @@
 import './Login.css';
 
-function Login() {
+function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const email = formData.get('email');
     const password = formData.get('password');
   
-  // add authentication/validation here
+    // Add authentication/validation logic here
 
     console.log('Email:', email);
     console.log('Password:', password);
@@ -16,8 +16,8 @@ function Login() {
   return (
     <main className="login-page">
       <section className="login-section">
-        <h2>Login</h2>
-        <p>Not a customer yet? <a href="/signup">Sign Up Here</a></p>
+        <h2>Sign Up</h2>
+        <p>Already have an account? <a href="/login">Login Here</a></p>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
@@ -27,11 +27,11 @@ function Login() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required />
           </div>
-          <button type="submit" className="login-page-btn">Login</button>
+          <button type="submit" className="login-page-btn">Sign Up</button>
         </form>
       </section>
     </main>
   );
 }
 
-export default Login;
+export default SignUp;
