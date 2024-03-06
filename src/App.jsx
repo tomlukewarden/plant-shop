@@ -1,13 +1,13 @@
-//import HomePage from './Pages/Home/HomePage'
-//import Login from './Pages/Login/Login'
-import SignUp from './Pages/Login/SignUp'
+
+import Profile from './Pages/Profile/Profile'
 import './App.css'
+import HomePage from './Pages/Home/HomePage'
 
 function App() {
 
   return (
     <>
-    <SignUp/>
+    <HomePage/>
     </>
   )
 }
