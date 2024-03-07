@@ -1,7 +1,7 @@
 import './Profile.css';
 
 function Profile() {
-  // Dummy user data for demonstration
+  // Dummy user data
   const userData = {
     name: "John Doe",
     email: "johndoe@example.com",

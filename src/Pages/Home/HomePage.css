@@ -59,17 +59,19 @@ body {
   background-color: #606C38;
   padding: 10px 0;
 }
-
-.nav-bar span {
+.nav-link {
   padding: 10px 20px;
+
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
-.nav-bar span:hover {
+.nav-link:hover {
   background-color: #BC6C25;
 }
+
 
 .home-shop {
   display: flex;
