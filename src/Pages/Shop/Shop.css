@@ -1,37 +1,43 @@
-.shop-page {
-  text-align: center;
-  padding: 20px;
-}
-
-.filters {
-  margin-bottom: 20px;
-}
-
-.filters input[type="text"],
-.filters select {
-  padding: 8px;
-  margin-right: 10px;
-  border-radius: 5px;
-  border: 1px solid #606C38;
-}
-
-.plant-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
 .plant {
   background-color: #FEFAE0;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.2s;
+}
+
+.plant-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
 }
 
 .plant h2 {
   margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
 }
 
 .plant p {
   margin: 5px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.add-to-basket {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 2px solid #DDA15E;
+  background-color: #FEFAE0;
+  color: #DDA15E;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.add-to-basket:hover {
+  background-color: #DDA15E;
+  color: #fff;
 }

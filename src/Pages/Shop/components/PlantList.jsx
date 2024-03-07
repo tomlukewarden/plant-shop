@@ -1,7 +1,6 @@
-
 import PropTypes from 'prop-types';
 
-function PlantList({ plants }) {
+function PlantList({ plants, addToCart }) {
   return (
     <div className="plant-list">
       {plants.map(plant => (
@@ -9,7 +8,7 @@ function PlantList({ plants }) {
           <h2>{plant.name}</h2>
           <p>Category: {plant.category}</p>
           <p>Price: £{plant.price}</p>
-          <button className='add-to-basket'>Add to Cart</button>
+          <button className='add-to-basket'  onClick={() => addToCart(plant)}>Add to Cart</button>
         </div>
       ))}
     </div>
@@ -18,6 +17,7 @@ function PlantList({ plants }) {
 
 PlantList.propTypes = {
   plants: PropTypes.array.isRequired,
+  addToCart: PropTypes.func.isRequired, // Ensure addToCart is a function prop
 };
 
 export default PlantList;

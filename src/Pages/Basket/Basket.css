@@ -2,40 +2,110 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.basket-heading {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .basket-items {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .basket-item {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
   display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
+  align-items: center;
 }
 
 .item-details {
   flex-grow: 1;
 }
 
-.total {
+.item-name {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.item-price {
+  margin: 0;
+  color: #666;
+}
+
+.item-quantity {
+  margin: 0;
+  font-size: 18px;
+}
+
+.quantity-controls {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.checkout-btn {
-  padding: 10px 20px;
+.quantity-btn {
+  background-color: #DDA15E;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-btn:hover {
+  background-color: #BC6C25;
+}
+
+.remove-btn {
   background-color: #606C38;
-  color: #FEFAE0;
-  font-size: 16px;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+  background-color: #283618;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.total-price {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+.checkout-btn {
+  background-color: #606C38;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px 20px;
   transition: background-color 0.3s ease;
 }
 
