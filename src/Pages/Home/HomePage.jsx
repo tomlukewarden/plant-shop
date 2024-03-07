@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import Shop from '../Shop/Shop';
+import Basket from '../Basket/Basket';
 import Profile from '../Profile/Profile';
 import AboutUs from '../AboutUs/AboutUs';
 import ContactUs from '../ContactUs/ContactUs';
@@ -16,7 +17,7 @@ function HomePage() {
       <>
         <header className="header">
           <div className="login">
-            <img className='basket' src="src/assets/cart.png" alt="shopping cart" width='50px'  />
+            <Link to='/basket'><img className='basket' src="src/assets/cart.png" alt="shopping cart" width='50px'  /></Link>
             <Link to='/login'><button className="login-btn">Login</button></Link>
             <Link to='/signup'><button className="sign-up-btn">Sign up</button></Link>
           </div>
@@ -45,6 +46,7 @@ function HomePage() {
 
           <Routes>
             <Route path='/' element={<></>}/>
+            <Route path='/basket' element={<Basket/>}/>
             <Route path='/shop' element={<Shop/>}/>
             <Route path='/about' element={<AboutUs/>}></Route>
             <Route path='/profile' element={<Profile/>}/>
