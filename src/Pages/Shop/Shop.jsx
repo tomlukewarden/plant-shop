@@ -6,7 +6,7 @@ import './Shop.css';
 
 function Shop() {
   const [cart, setCart] = useState([]);
-  const [isOrderPlaced, setIsOrderPlaced] = useState(false); // State to track if order is placed
+  const [isOrderPlaced, setIsOrderPlaced] = useState(false);
 
   const addToCart = (plant) => {
     const itemInCart = cart.find(item => item.id === plant.id);
