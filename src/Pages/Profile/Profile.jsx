@@ -1,18 +1,11 @@
 import './Profile.css';
 
 function Profile() {
-  // Dummy user data
   const userData = {
-    name: "John Doe",
-    email: "johndoe@example.com",
-    currentOrders: [
-      { id: 1, product: "Plant Pot", quantity: 2 },
-      { id: 2, product: "Succulent Plant", quantity: 1 }
-    ],
-    pastOrders: [
-      { id: 3, product: "Monstera Plant", quantity: 1 },
-      { id: 4, product: "Fiddle Leaf Fig", quantity: 3 }
-    ]
+    name: "",
+    email: "",
+    currentOrders: [],
+    pastOrders: []
   };
 
   return (

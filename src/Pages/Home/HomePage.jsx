@@ -7,12 +7,14 @@ import FeaturedProducts from './Components/FeaturedProducts';
 import ShopByCategory from './Components/ShopByCategory';
 import Login from '../Login/Login'
 import SignUp from '../Login/SignUp';
+import Order from '../Shop/components/Order'; 
 import './HomePage.css';
 
 function HomePage() {
   const location = useLocation();
 
   return (
+
       <>
         <header className="header">
           <div className="login">
@@ -50,6 +52,7 @@ function HomePage() {
             <Route path='/contact' element={<ContactUs/>}></Route>
             <Route path='/login' element={<Login/>}></Route>
             <Route path='/signup' element={<SignUp/>}></Route>
+            <Route path='/order' element={<Order items={[]} totalPrice={0} onOrder={() => {}} />}></Route>
           </Routes>
         </main>
       </>

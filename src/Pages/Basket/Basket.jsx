@@ -1,14 +1,9 @@
-import './Basket.css';
+
 import PropTypes from 'prop-types';
 
-function Basket({ items, onUpdateQuantity, onRemoveItem }) {
-  const getTotalPrice = () => {
-    return items.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
-  const getTotalQuantity = () => {
-    return items.reduce((total, item) => total + item.quantity, 0);
-  };
+function Basket({ items, onUpdateQuantity, onRemoveItem, onOrder }) {
+  const getTotalPrice = () => items.reduce((total, item) => total + item.price * item.quantity, 0);
+  const getTotalQuantity = () => items.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div className="basket-page">
@@ -35,7 +30,7 @@ function Basket({ items, onUpdateQuantity, onRemoveItem }) {
       <div className="total">
         <h2 className="total-price">Total Price: £{getTotalPrice().toFixed(2)}</h2>
         <p>Total Quantity: {getTotalQuantity()}</p>
-        <button className="checkout-btn">Place Order</button>
+        <button className="checkout-btn" onClick={onOrder}>Place Order</button>
       </div>
     </div>
   );
@@ -45,6 +40,7 @@ Basket.propTypes = {
   items: PropTypes.array.isRequired,
   onUpdateQuantity: PropTypes.func.isRequired,
   onRemoveItem: PropTypes.func.isRequired,
+  onOrder: PropTypes.func.isRequired,
 };
 
 export default Basket;
