@@ -1,30 +1,19 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import { process } from 'process'; 
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
-const app = express();
-const PORT = process.env.PORT || 5000; 
-
-app.use(cors());
-app.use(bodyParser.json());
-
-// Simulated user data
-const users = [
-  { id: 1, email: 'user@example.com', password: 'password123' }
-];
-
-
-app.post('/api/login', (req, res) => {
-  const { email, password } = req.body;
-
-  const user = users.find(user => user.email === email);
-
-  if (!user || user.password !== password) {
-    return res.status(401).json({ message: 'Invalid email or password' });
+async function createUser(email, password, firstName, lastName) {
+  try {
+    const newUser = await prisma.user.create({
+      data: {
+        email,
+        password,
+        firstName,
+        lastName,
+      },
+    });
+    return newUser;
+  } catch (error) {
+    throw new Error("Failed to create user: " + error.message);
   }
+}
 
-  res.json({ message: 'Login successful' });
-});
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
