@@ -73,3 +73,21 @@ async function getAllPlants() {
     throw new Error("Failed to fetch plants: " + error.message);
   }
 }
+
+async function getAllUsers() {
+  try {
+    const users = await prisma.user.findMany();
+    return users;
+  } catch (error) {
+    throw new Error("Failed to fetch users: " + error.message);
+  }
+}
+
+module.exports = {
+  getAllPlants,
+  updatePlant,
+  createOrder,
+  createPlant,
+  createUser,
+  getAllUsers,
+};
