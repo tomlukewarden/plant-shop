@@ -36,6 +36,15 @@ async function createOrder(userId, plantIds, totalPrice) {
   }
 }
 
+async function getAllOrders() {
+  try {
+    const orders = await prisma.order.findMany();
+    return orders;
+  } catch (error) {
+    throw new Error("Failed to fetch orders: " + error.message);
+  }
+}
+
 async function createPlant(name, description, price, image, inventory) {
   try {
     const newPlant = await prisma.plant.create({
@@ -90,4 +99,5 @@ module.exports = {
   createPlant,
   createUser,
   getAllUsers,
+  getAllOrders,
 };
