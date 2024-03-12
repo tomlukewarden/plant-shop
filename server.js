@@ -17,31 +17,32 @@ async function createUser(email, password, firstName, lastName) {
   }
 }
 
-async function createOrder(userId, plantIds, totalPrice) {
+async function loginUser(email, password) {
   try {
-    const newOrder = await prisma.order.create({
-      data: {
-        user: {
-          connect: { id: userId },
-        },
-        plants: {
-          connect: plantIds.map((id) => ({ id })),
-        },
-        totalPrice,
+    const user = await prisma.user.findUnique({
+      where: {
+        email,
       },
     });
-    return newOrder;
+    if (!user) {
+      throw new Error("User not found");
+    }
+    if (user.password !== password) {
+      throw new Error("Incorrect password");
+    }
+
+    return user;
   } catch (error) {
-    throw new Error("Failed to create order.");
+    throw new Error("Failed to login: " + error.message);
   }
 }
 
-async function getAllOrders() {
+async function getAllUsers() {
   try {
-    const orders = await prisma.order.findMany();
-    return orders;
+    const users = await prisma.user.findMany();
+    return users;
   } catch (error) {
-    throw new Error("Failed to fetch orders: " + error.message);
+    throw new Error("Failed to fetch users: " + error.message);
   }
 }
 
@@ -83,21 +84,41 @@ async function getAllPlants() {
   }
 }
 
-async function getAllUsers() {
+async function createOrder(userId, plantIds, totalPrice) {
   try {
-    const users = await prisma.user.findMany();
-    return users;
+    const newOrder = await prisma.order.create({
+      data: {
+        user: {
+          connect: { id: userId },
+        },
+        plants: {
+          connect: plantIds.map((id) => ({ id })),
+        },
+        totalPrice,
+      },
+    });
+    return newOrder;
   } catch (error) {
-    throw new Error("Failed to fetch users: " + error.message);
+    throw new Error("Failed to create order.");
+  }
+}
+
+async function getAllOrders() {
+  try {
+    const orders = await prisma.order.findMany();
+    return orders;
+  } catch (error) {
+    throw new Error("Failed to fetch orders: " + error.message);
   }
 }
 
 module.exports = {
-  getAllPlants,
-  updatePlant,
-  createOrder,
-  createPlant,
   createUser,
+  loginUser,
   getAllUsers,
+  createPlant,
+  updatePlant,
+  getAllPlants,
+  createOrder,
   getAllOrders,
 };

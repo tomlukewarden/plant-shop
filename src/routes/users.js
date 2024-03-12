@@ -1,25 +1,50 @@
-const express = require('express');
-const router = express.Router();
-const { createUser, getAllUsers } = require('../controller/users');
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
-
-router.get('/', async (req, res) => {
+async function createUser(email, password) {
   try {
-    const users = await getAllUsers();
-    res.status(200).json(users); 
+    const newUser = await prisma.user.create({
+      data: {
+        email,
+        password,
+      },
+    });
+    return newUser;
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    throw new Error("Failed to create user: " + error.message);
   }
-});
+}
 
-
-router.post('/', async (req, res) => {
+async function getAllUsers() {
   try {
-    const newUser = await createUser(req.body);
-    res.status(201).json(newUser);
+    const users = await prisma.user.findMany();
+    return users;
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    throw new Error("Failed to fetch users: " + error.message);
   }
-});
+}
 
-module.exports = router;
+async function loginUser(email, password) {
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    if (!user || user.password !== password) {
+      throw new Error("Invalid email or password");
+    }
+
+    return user;
+  } catch (error) {
+    throw new Error("Failed to login: " + error.message);
+  }
+}
+
+module.exports = {
+  createUser,
+  getAllUsers,
+  loginUser,
+};
+ 

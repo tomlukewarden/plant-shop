@@ -1,24 +1,42 @@
-import './Login.css';
+import './SignUp.css';
+import { useState } from 'react';
 
 function SignUp() {
-  const handleSubmit = (event) => {
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const email = formData.get('email');
     const password = formData.get('password');
-  
-    // Add authentication/validation logic here
 
-    console.log('Email:', email);
-    console.log('Password:', password);
+    try {
+      const response = await fetch('/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message);
+      }
+
+      window.location.href = '/login'; // Redirect to login page
+    } catch (error) {
+      setError(error.message || 'Sign up failed');
+    }
   };
 
   return (
-    <main className="login-page">
-      <section className="login-section">
+    <main className="signup-page">
+      <section className="signup-section">
         <h2>Sign Up</h2>
+        {error && <p className="error-message">{error}</p>}
         <p>Already have an account? <a href="/login">Login Here</a></p>
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="signup-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required />
@@ -27,7 +45,7 @@ function SignUp() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required />
           </div>
-          <button type="submit" className="login-page-btn">Sign Up</button>
+          <button type="submit" className="signup-page-btn">Sign Up</button>
         </form>
       </section>
     </main>

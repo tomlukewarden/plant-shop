@@ -1,22 +1,42 @@
 import './Login.css';
+import { useState } from 'react';
 
 function Login() {
-  const handleSubmit = (event) => {
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const email = formData.get('email');
     const password = formData.get('password');
-  
-  // add authentication/validation here
 
-    console.log('Email:', email);
-    console.log('Password:', password);
+    try {
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+
+      const data = await response.json();
+      const { token } = data;
+      localStorage.setItem('token', token);
+      window.location.href = '/';
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
     <main className="login-page">
       <section className="login-section">
         <h2>Login</h2>
+        {error && <p className="error-message">{error}</p>}
         <p>Not a customer yet? <a href="/signup">Sign Up Here</a></p>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
