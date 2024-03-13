@@ -1,5 +1,6 @@
-import './Login.css';
 import { useState } from 'react';
+import './Login.css';
+
 
 function Login() {
   const [error, setError] = useState('');
@@ -11,7 +12,7 @@ function Login() {
     const password = formData.get('password');
 
     try {
-      const response = await fetch('/login', {
+      const response = await fetch(`http://localhost:3030/users/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,13 +25,13 @@ function Login() {
       }
 
       const data = await response.json();
-      const { token } = data;
-      localStorage.setItem('token', token);
-      window.location.href = '/';
+      console.log('User:', data);
+      // Redirect upon successful login
     } catch (error) {
       setError(error.message);
     }
   };
+
 
   return (
     <main className="login-page">

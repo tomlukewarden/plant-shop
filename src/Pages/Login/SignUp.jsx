@@ -1,6 +1,7 @@
 import './SignUp.css';
 import { useState } from 'react';
 
+
 function SignUp() {
   const [error, setError] = useState('');
 
@@ -9,22 +10,22 @@ function SignUp() {
     const formData = new FormData(event.target);
     const email = formData.get('email');
     const password = formData.get('password');
-
+  
     try {
-      const response = await fetch('/signup', {
+      const response = await fetch(`http://localhost:3030/users/signup`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
       });
-
+  
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.message);
+        throw new Error(data.error); 
       }
-
-      window.location.href = '/login'; // Redirect to login page
+  
+      window.location.href = '/login';
     } catch (error) {
       setError(error.message || 'Sign up failed');
     }
