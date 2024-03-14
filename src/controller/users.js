@@ -3,14 +3,6 @@ import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
-export const getAllUsers = async () => {
-  try {
-    const users = await prisma.user.findMany();
-    return users;
-  } catch (error) {
-    throw new Error('Failed to fetch users: ' + error.message);
-  }
-};
 
 export const loginUser = async (email, password) => {
   try {
