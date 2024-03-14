@@ -1,6 +1,6 @@
+// Login.jsx
 import { useState } from 'react';
 import './Login.css';
-
 
 function Login() {
   const [error, setError] = useState('');
@@ -31,7 +31,6 @@ function Login() {
       setError(error.message);
     }
   };
-
 
   return (
     <main className="login-page">

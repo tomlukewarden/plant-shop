@@ -1,29 +1,56 @@
-const users = [
-  { id: 1, email: 'user1@example.com', password: 'password1' },
-  { id: 2, email: 'user2@example.com', password: 'password2' }
-];
+import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
+
+const prisma = new PrismaClient();
 
 export const getAllUsers = async () => {
-  return users;
+  try {
+    const users = await prisma.user.findMany();
+    return users;
+  } catch (error) {
+    throw new Error('Failed to fetch users: ' + error.message);
+  }
 };
 
 export const loginUser = async (email, password) => {
-  const user = users.find((user) => user.email === email);
+  try {
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
 
-  if (!user || user.password !== password) {
-    throw new Error('Invalid email or password');
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      throw new Error('Invalid email or password');
+    }
+
+    return user;
+  } catch (error) {
+    throw new Error('Failed to login: ' + error.message);
   }
-
-  return user;
 };
 
-export const signUpUser = async (email, password) => {
-  const existingUser = users.find((user) => user.email === email);
-  if (existingUser) {
-    throw new Error('User already exists');
-  }
+export const signUpUser = async (email, password, firstName, lastName) => {
+  try {
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+    
+    if (existingUser) {
+      throw new Error('User already exists');
+    }
 
-  const newUser = { id: users.length + 1, email, password };
-  users.push(newUser);
-  return newUser;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = await prisma.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+        firstName,
+        lastName,
+      },
+    });
+    
+    return newUser;
+  } catch (error) {
+    throw new Error('Failed to sign up: ' + error.message);
+  }
 };
