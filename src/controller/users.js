@@ -54,3 +54,18 @@ export const signUpUser = async (email, password, firstName, lastName) => {
     throw new Error('Failed to sign up: ' + error.message);
   }
 };
+
+export const getUserProfile = async (userId) => {
+  try {
+    const userProfile = await prisma.user.findUnique({
+      where: { id: userId },
+      include: { 
+        orders: true,
+      },
+    });
+    
+    return userProfile;
+  } catch (error) {
+    throw new Error('Failed to get user profile: ' + error.message);
+  }
+};

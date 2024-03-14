@@ -1,12 +1,35 @@
+import { useEffect, useState } from 'react';
 import './Profile.css';
 
 function Profile() {
-  const userData = {
-    name: "",
-    email: "",
-    currentOrders: [],
-    pastOrders: []
-  };
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+      
+        const response = await fetch('http://localhost:3030/users/profile');
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+        const userData = await response.json();
+        setUserData(userData);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchUserData()
+  }, []);
+
+  if (error) {
+    return <p className="error-message">{error}</p>; 
+  }
+
+  if (!userData) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <main className="profile-page">

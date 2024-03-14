@@ -1,4 +1,3 @@
-// Login.jsx
 import { useState } from 'react';
 import './Login.css';
 
@@ -10,7 +9,7 @@ function Login() {
     const formData = new FormData(event.target);
     const email = formData.get('email');
     const password = formData.get('password');
-
+  
     try {
       const response = await fetch(`http://localhost:3030/users/login`, {
         method: 'POST',
@@ -19,14 +18,16 @@ function Login() {
         },
         body: JSON.stringify({ email, password }),
       });
-
+  
       if (!response.ok) {
-        throw new Error('Login failed');
+        throw new Error('Invalid email or password');
       }
-
-      const data = await response.json();
-      console.log('User:', data);
-      // Redirect upon successful login
+  
+      const userData = await response.json();
+      console.log('User:', userData);
+  
+    
+      window.location.href = '/profile';
     } catch (error) {
       setError(error.message);
     }
