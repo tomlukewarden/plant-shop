@@ -1,5 +1,23 @@
 # Final Portfolio Project
 
+Welcome to my final project for the Boolean 6 month Full Stack course. All of the features implemented are not 100% finished but this web app is something that I will continue to grow over time, to further my own skills.
+
+## Technology
+
+Technologies Used:
+
+- **React**: A JavaScript library for building user interfaces.
+- **HTML**: Hypertext Markup Language, the standard markup language for creating web pages and web applications.
+- **CSS**: Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.
+- **Express**: A web application framework for Node.js, designed for building web applications and APIs.
+- **Prisma**: A modern database toolkit for TypeScript and Node.js that simplifies database access with type safety.
+- **Node.js**: A JavaScript runtime built on Chrome's V8 JavaScript engine, commonly used for building server-side applications.
+- **PostgreSQL**: A powerful, open-source relational database system known for its reliability, robustness, and feature set.
+
+## Deployment
+
+The deployed application can be accessed [here](https://main--snazzy-starburst-1a86d8.netlify.app/).
+
 ## DOMAIN MODEL
 
 Entities:
