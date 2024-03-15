@@ -1,24 +1,52 @@
 # Final Portfolio Project
 
-## REQUIREMENTS
+## DOMAIN MODEL
 
-User can login and register User can add plant/s to their basket []
-User can see previous orders []
-User can view price and info on plant []
-User can update profile []
-User can filter by plant type e.g indoor/outdoor/pet-Safe []
-User can search for plants []
+Entities:
+  User:
+    Attributes:
+        ID (integer)
+        Email (string)
+        Password (string)
 
-## Timeline WEEK 1
+Relationships:
+  User Authentication:
+    Users can authenticate by providing their email and password.
+    The system verifies the provided credentials against the stored user data.
 
-- MONDAY - work on styles of each page within project
+Behaviors:
+  User Authentication:
+      A user can attempt to log in by providing their email and password.
+      If the provided credentials match a user's record in the system, the user is successfully authenticated.
+      If the provided credentials do not match any user's record or are invalid, authentication fails.
+Actions:
+  Sign Up:
+    Users can sign up by providing their email and password.
+    Upon sign-up, the system creates a new user record with the provided email and password.
+    If a user with the same email already exists, sign-up fails, and an error is returned.
+  Login:
+    Users can log in by providing their email and password.
+    Upon successful login, the system grants access to the user's account.
+    If the provided credentials are incorrect or do not match any user's record, login fails, and an error is returned.
 
-- TUESDAY - finish styles (need to extend this)
+Use Cases:
+  User Registration:
+    Actors: User
+    Description: Allows a new user to create an account by providing their email and password.
+    Preconditions: None
+    Postconditions: A new user account is created if the provided email is unique.
+  User Authentication:
+    Actors: User
+    Description: Allows a registered user to log in by providing their email and password.
+    Preconditions: The user account must exist.
+    Postconditions: The user is granted access to their account if the provided credentials are correct.
 
-- WEDNESDAY - work on basket functionality along with rendering images/pages for the plants
+Error Handling:
+    Actors: System
+    Description: Handles errors that occur during the sign-up and login processes.
+    Preconditions: Invalid or duplicate email, incorrect password.
+    Postconditions: Error messages are returned to the user indicating the cause of the error.
 
-- THURSDAY -  finish basket functionality and work on profile pages
+## ERD
 
-- FRIDAY - work on profile components like viewing orders past/present etc
-
-- SAT/SUN - start implementing the backend e.g login/order managment etc
+![ERD](src/assets/erd.PNG)
