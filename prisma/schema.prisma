@@ -1,38 +1,35 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("postgres://msmfmskr:gz8voV_LSvqIBuK5-L2S5inIiY4lvGyh@flora.db.elephantsql.com/msmfmskr?schema=prisma")
-}
-
 model User {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
-  password   String
-  first_name String?
-  last_name  String?
-  addresses  Address[] // One-to-many relationship with Address
-  orders     Order[]   // One-to-many relationship with Order
-}
-
-model Address {
-  id          Int      @id @default(autoincrement())
-  user        User     @relation(fields: [user_id], references: [id])
-  user_id     Int
-  street      String
-  city        String
-  state       String
-  country     String
-  postal_code String
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  password String
+  orders   Order[]
 }
 
 model Order {
-  id          Int       @id @default(autoincrement())
-  user        User      @relation(fields: [user_id], references: [id])
-  user_id     Int
-  product     String
-  quantity    Int
-  order_date  DateTime  @default(now())
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  totalPrice  Float
+  status      String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int
+  items       Item[]
+}
+
+model Item {
+  id         Int      @id @default(autoincrement())
+  name       String
+  price      Float
+  quantity   Int
+  orderId    Int
+  order      Order    @relation(fields: [orderId], references: [id])
 }
