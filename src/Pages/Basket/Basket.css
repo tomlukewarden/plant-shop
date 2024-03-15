@@ -1,5 +1,10 @@
+.basket-container {
+margin-top: 50px;
+  align-items: center;
+  height: 100vh;
+}
 
-.basket-page {
+.basket-content {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -110,6 +115,6 @@
   transition: background-color 0.3s ease;
 }
 
-.checkout-btn:hover {
+basket.checkout-btn:hover {
   background-color: #283618;
 }

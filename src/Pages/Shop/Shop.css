@@ -98,7 +98,3 @@
   padding: 10px 20px;
   transition: background-color 0.3s ease;
 }
-
-.order-btn:hover {
-  background-color: #283618;
-}

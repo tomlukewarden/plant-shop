@@ -1,3 +1,4 @@
+import '../Shop.css'
 import PropTypes from 'prop-types';
 
 function PlantList({ plants, addToCart }) {
@@ -17,7 +18,7 @@ function PlantList({ plants, addToCart }) {
 
 PlantList.propTypes = {
   plants: PropTypes.array.isRequired,
-  addToCart: PropTypes.func.isRequired, // Ensure addToCart is a function prop
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default PlantList;
